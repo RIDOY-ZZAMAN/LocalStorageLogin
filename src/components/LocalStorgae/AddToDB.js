@@ -73,6 +73,10 @@ const currentLocalStorageData = () => {
   return localStorage.getItem("RegisterInfo");
 };
 
+const currentLocalStorageUserData = () => {
+  return localStorage.getItem("userInfo");
+};
+
 const changePassword = (email, password, confirmPassword) => {
   return new Promise(async (resolve, reject) => {
     if (password && confirmPassword) {
@@ -91,7 +95,20 @@ const changePassword = (email, password, confirmPassword) => {
 };
 
 const setUserName = (email) => {
-  console.log("consoling user Name");
+  return new Promise(async (resolve, reject) => {
+    if (email) {
+      const exist = await currentLocalStorageData();
+      const parseExist = JSON.parse(exist);
+      const foundEmail = parseExist.find((items) => items.email === email);
+      resolve(foundEmail);
+    }
+  });
+};
+
+const savedLogedUser = (userInfo) => {
+  const locaStorage = [];
+  locaStorage.push(userInfo);
+  localStorage.setItem("userInfo", JSON.stringify(locaStorage));
 };
 
 export {
@@ -100,4 +117,6 @@ export {
   authorization,
   changePassword,
   setUserName,
+  savedLogedUser,
+  currentLocalStorageUserData
 };

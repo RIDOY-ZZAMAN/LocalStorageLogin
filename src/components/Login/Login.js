@@ -1,6 +1,10 @@
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { authorization } from "../LocalStorgae/AddToDB";
+import {
+  authorization,
+  savedLogedUser,
+  setUserName,
+} from "../LocalStorgae/AddToDB";
 import "./Login.css";
 
 const Login = () => {
@@ -16,6 +20,10 @@ const Login = () => {
       : authorization(email, password)
           .then((data) => {
             if (data === "Succes") {
+              setUserName(email)
+                .then((data) => savedLogedUser(data))
+                .catch((err) => alert("err"));
+
               navigate("/");
             }
           })

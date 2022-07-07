@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Header from "../Header/Header";
-import { currentLocalStorageData } from "../LocalStorgae/AddToDB";
+import { currentLocalStorageUserData } from "../LocalStorgae/AddToDB";
 
 const Home = () => {
   const [userName, setUserName] = useState("");
   useEffect(() => {
-    const getUserData = currentLocalStorageData();
+    const getUserData = currentLocalStorageUserData();
     const parseGetUserData = JSON.parse(getUserData);
     parseGetUserData?.map((item) => setUserName(item.name));
   }, []);
