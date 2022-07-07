@@ -10,12 +10,10 @@ const addToDB = (RegisterInfo) => {
         return;
       } else {
         const exist = await currentLocalStorageData();
-        console.log("exist is", exist);
         if (exist === null) {
           addToLocalStorage(RegisterInfo);
         } else {
           const parseExist = JSON.parse(exist);
-          console.log(parseExist);
           const checkingEmail = parseExist.find(
             (items) => items.email === RegisterInfo.email
           );
@@ -44,6 +42,14 @@ const upDateLocalStorage = async (newLoginInfo) => {
   const parseExist = JSON.parse(exist);
   parseExist.push(newLoginInfo);
   localStorage.setItem("RegisterInfo", JSON.stringify(parseExist));
+};
+
+const upDateLoalStorageAfterPC = async (newLoginInfo) => {
+  const exist = await currentLocalStorageData();
+  const parseExist = JSON.parse(exist);
+  const rest = parseExist.filter((items) => items.email !== newLoginInfo.email);
+  rest.push(newLoginInfo);
+  localStorage.setItem("RegisterInfo", JSON.stringify(rest));
 };
 
 const authorization = (email, password) => {
@@ -75,7 +81,7 @@ const changePassword = (email, password, confirmPassword) => {
       if (parseExist) {
         const checkingEmail = parseExist.find((items) => items.email === email);
         checkingEmail.password = confirmPassword;
-        addToLocalStorage(checkingEmail);
+        upDateLoalStorageAfterPC(checkingEmail);
         resolve("Success");
       }
     } else {
@@ -84,4 +90,14 @@ const changePassword = (email, password, confirmPassword) => {
   });
 };
 
-export { addToDB, currentLocalStorageData, authorization, changePassword };
+const setUserName = (email) => {
+  console.log("consoling user Name");
+};
+
+export {
+  addToDB,
+  currentLocalStorageData,
+  authorization,
+  changePassword,
+  setUserName,
+};
