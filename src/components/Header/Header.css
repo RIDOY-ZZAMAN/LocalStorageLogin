@@ -1,0 +1,23 @@
+.Header {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  background-color: indigo;
+  justify-content: center;
+  align-items: center;
+}
+.HeaderContent {
+  margin-left: auto;
+  display: flex;
+  width: 210px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.HeaderContent > p {
+  color: white;
+}
+
+.Header button {
+  padding: 5px 10px;
+}

@@ -1,0 +1,64 @@
+.Container {
+  margin: 30px 50px;
+}
+
+.Login-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.Login-Label {
+  display: flex;
+  flex-direction: column;
+}
+
+.Login-Label label {
+  margin: 5px 0;
+  text-align: start;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.Login_Input input {
+  margin: 5px 0;
+  width: 25vw;
+  height: 32px;
+  background-color: #eef3f8;
+  border: none;
+  border-radius: 5px;
+}
+
+.Login-Input-Button {
+  display: flex;
+  flex-direction: column;
+}
+
+.Login_Input {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.RegAndForgotPassword {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.commonSpanColor {
+  color: blue;
+  font-weight: 400;
+}
